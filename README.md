@@ -70,6 +70,6 @@ dump する方法
 
 ```
 
-docker exec -i mysql-container mysqldump -u root -p demo > dump.sql
-
+<!-- docker exec -i mysql-container mysqldump -u root -p demo > dump.sql -->
+docker exec -i mysql-container mysqldump -u root -p'root' demo > my_database_dump.sql
 ```
