@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -72,10 +71,9 @@ public class HelloController {
             Long newUserId = jdbcTemplate.queryForObject(selectSql, Long.class, name, email);
 
             return ResponseEntity.status(HttpStatus.CREATED).body(Map.of(
-                "id", newUserId,
-                "name", name,
-                "email", email
-            ));
+                    "id", newUserId,
+                    "name", name,
+                    "email", email));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error creating user");
         }
@@ -103,10 +101,9 @@ public class HelloController {
             jdbcTemplate.update(sql, name, email, user_id);
 
             return ResponseEntity.ok(Map.of(
-                "id", user_id,
-                "name", name,
-                "email", email
-            ));
+                    "id", user_id,
+                    "name", name,
+                    "email", email));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error updating user");
         }
